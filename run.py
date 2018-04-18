@@ -187,4 +187,4 @@ def subscribe_reply(msg):
  
 #########################################################
 register_menu()
-itchatmp.run()    
+itchatmp.run(port=config.HTTP_PORT)    
