@@ -146,14 +146,14 @@ def text_reply(msg):
     user_id = msg['FromUserName']
     content = msg['Content']
     print("receive text")
-    return reply_to_user(ChatBot(USER.get_role(user_id)).reply_to_text(user_id, content), user_id)
+    return reply_to_user(ChatBot().reply_to_text(user_id, content), user_id)
 
 #########################################################
 @itchatmp.msg_register(itchatmp.content.VOICE)
 def voice_reply(msg):
     user_id = msg['FromUserName']
     content = msg['Recognition']
-    chatbot = ChatBot(USER.get_role(user_id))
+    chatbot = ChatBot()
     print("receive voice")
     if not content or content.strip() == '': return reply_to_user(chatbot.reply_to_unknown(user_id))
     return reply_to_user(chatbot.reply_to_text(user_id, content), user_id)
@@ -165,15 +165,15 @@ def subscribe_reply(msg):
     user_id = msg['FromUserName']
     if msg['Event'] == 'subscribe' :
         print("receive event: subscribe")
-        return reply_to_user(ChatBot(USER.get_role(user_id)).reply_to_subscribe(user_id), user_id)
+        return reply_to_user(ChatBot().reply_to_subscribe(user_id), user_id)
     elif msg['Event'] == 'SCAN' :
         print("receive event: SCAN")
-        return reply_to_user(ChatBot(USER.get_role(user_id)).reply_to_order_pay(user_id, msg['EventKey']), user_id)
-    elif msg['Event'] == 'CLICK' :
-        print("receive event: CLICK")
-        role_id = msg['EventKey']
-        USER.set_role(user_id, role_id)
-        return USER.role_modified_reply(role_id)
+        return reply_to_user(ChatBot().reply_to_order_pay(user_id, msg['EventKey']), user_id)
+    # elif msg['Event'] == 'CLICK' :
+    #     print("receive event: CLICK")
+    #     role_id = msg['EventKey']
+    #     USER.set_role(user_id, role_id)
+    #     return USER.role_modified_reply(role_id)
     return ''
 
 #########################################################
@@ -183,8 +183,8 @@ def subscribe_reply(msg):
 #     media_id = msg['MediaId']
 #     image_url = msg['PicUrl']
 #     picture_id = get_picture_id(media_id)
-#     return reply_to_user(ChatBot(USER.get_role(user_id)).reply_to_media(user_id, picture_id, image_url, media_id), user_id)
+#     return reply_to_user(ChatBot().reply_to_media(user_id, picture_id, image_url, media_id), user_id)
  
 #########################################################
-register_menu()
+# register_menu()
 itchatmp.run(port=config.HTTP_PORT)    

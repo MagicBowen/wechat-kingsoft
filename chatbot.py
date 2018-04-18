@@ -11,7 +11,7 @@ logger = logging.getLogger('wechat')
 
 #########################################################
 class ChatBot:
-    def __init__(self, agent):
+    def __init__(self, agent = config.AGENT):
         self.url = config.CHATBOT_URL
         self.agent = agent
 
