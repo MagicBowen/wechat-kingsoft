@@ -1,6 +1,6 @@
 .DS_Store
 storage.pkl
-config.py
+./config.py
 *.pyc
 *.swp
 *.pkl
