@@ -1,0 +1,11 @@
+.DS_Store
+storage.pkl
+config.py
+*.pyc
+*.swp
+*.pkl
+__pycache__/*
+downloads/*
+uploads/*
+.vscode/*
+lib/qrcode/QrCode/__pycache__/*

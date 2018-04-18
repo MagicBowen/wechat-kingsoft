@@ -1,0 +1,4 @@
+zbarlight==1.2
+setuptools==17.0
+Pillow==4.3.0
+qrcode==5.3
