@@ -16,7 +16,7 @@ pycrypto is not installed correctly.
     - or through github.com/littlecodersh/
     - or report an issue \
 '''
-PORT_WARNING = 'port 80 is in use.'
+PORT_WARNING = 'port {0} is in use.'
 
 def env_test(port):
     try:
@@ -34,4 +34,4 @@ def env_test(port):
         s.listen(1)
         s.close()
     except:
-        raise EnvironmentError(PORT_WARNING)
+        raise EnvironmentError(PORT_WARNING.format(port))
